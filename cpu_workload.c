@@ -18,15 +18,24 @@
 #include "cpu_info.h"
 cpu_set_t cpuset,cpuget;
  
-double waste_time(long n)
+double waste_time(float workload_level)
 {
-    double res = 0;
-    long i = 0;
-    while (i <n * 200000000) {
-        i++;
-        res += sqrt(i);
+    struct tms tmsstart, tmsend;
+    float workload_level = 0.8;
+    int workTime = 1000 * workload_level;
+    int idelTime = 1000 - workTime;
+    times(&tmsstart);
+    while (1){
+        int i=100;
+        while(i--){
+        }
+        times(&tmsend);
+        if((tmsend->tms_utime - tmsstart->tms_utime)){
+            sleep(idelTime);
+            times(&tmsstart)
+        }
+
     }
-    return res;
 }
  
 void *thread_func(void *param)
