@@ -1,14 +1,15 @@
 library_FLAGS=-lpthread -lm 
 CC=gcc
 BIN_DIR=bin
+flag= -g -O0
 
 all: 
 
 %.o: %.c
-	$(CC) -c $< -o $@ 
+	$(CC) -c $< -o $@  $(flag)
 
 $(BIN_DIR)/%: %.o
-	$(CC) $< -o $@ $(library_FLAGS)
+	$(CC) $< -o $@ $(library_FLAGS) $(flag)
 
 
 #cpu_workload:cpu_workload.c $(CC) -o $@ $< $(library_FLAGS)
@@ -25,4 +26,4 @@ test_get_cpu_mem_io_info:bin/get_cpu_mem_io_info
 	./$(BIN_DIR)/get_cpu_mem_io_info
 
 clean:
-	rm -rf *.o
+	rm -rf bin/*

@@ -1,1 +1,1 @@
-#define CPU_NUM 12
+#define CPU_NUM 1

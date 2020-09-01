@@ -16,23 +16,37 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include "cpu_info.h"
+#include <sys/times.h>
+#include <sys/types.h>
+#include <unistd.h>
+ #include <time.h>
+
 cpu_set_t cpuset,cpuget;
  
 double waste_time(float workload_level)
 {
+    long clktck=sysconf(_SC_CLK_TCK);
     struct tms tmsstart, tmsend;
-    float workload_level = 0.8;
+    workload_level = 0.6;
     int workTime = 1000 * workload_level;
     int idelTime = 1000 - workTime;
+    float count=1234.3;
+
     times(&tmsstart);
     while (1){
-        int i=100;
+        int i=10;
         while(i--){
         }
         times(&tmsend);
-        if((tmsend->tms_utime - tmsstart->tms_utime)){
-            sleep(idelTime);
-            times(&tmsstart)
+        
+        int curTime =(1000*(tmsend.tms_utime - tmsstart.tms_utime)/(double)clktck) ;
+        //printf("curTime %d\n",curTime);
+
+
+        if(curTime > workTime){
+            printf("sleep");
+            usleep(idelTime*1000);
+            times(&tmsstart);
         }
 
     }
