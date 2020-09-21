@@ -34,13 +34,13 @@ double waste_time(float workload_level)
 
     times(&tmsstart);
     while (1){
-        int i=10;
+        int i=250;
         while(i--){
         }
         times(&tmsend);
         
         int curTime =(1000*(tmsend.tms_utime - tmsstart.tms_utime)/(double)clktck) ;
-        //printf("curTime %d\n",curTime);
+        printf("curTime %d\n",curTime);
 
 
         if(curTime > workTime){

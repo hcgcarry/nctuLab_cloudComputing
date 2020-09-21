@@ -27,3 +27,10 @@ test_get_cpu_mem_io_info:bin/get_cpu_mem_io_info
 
 clean:
 	rm -rf bin/*
+
+test_pro_1:bin/pro_1
+	./$(BIN_DIR)/pro_1
+	
+
+test:bin/pthread_setaffinity_np_test
+	./$(BIN_DIR)/pthread_setaffinity_np_test
