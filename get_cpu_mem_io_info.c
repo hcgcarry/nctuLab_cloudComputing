@@ -25,7 +25,7 @@ int main()
     printf("needAlloMem:%d\n",needAlloMem);
     int* allocateMem = malloc(1000*needAlloMem);
     for(int i=0;i<1000*needAlloMem/4;i++){
-        allocateMem[i] = 1;
+        allocateMem[i] = i;
     }
     while(1){
 
